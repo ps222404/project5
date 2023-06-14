@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string("name_nl");
             $table->string("description");
             $table->string("description_nl");
-            $table->string('explanation');
-            $table->string('explanation_nl');
+            $table->string('explanation', 1000);
+            $table->string('explanation_nl', 1000);
             $table->string("GIF");
             $table->timestamps();
         });
