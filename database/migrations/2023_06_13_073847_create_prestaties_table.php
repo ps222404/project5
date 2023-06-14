@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('prestaties', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('oefening_id');
+            $table->foreign('oefening_id')->references('id')->on('oefeningen');
             $table->integer("amount");
             $table->date("date");
             $table->time("start");
