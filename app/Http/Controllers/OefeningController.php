@@ -23,9 +23,16 @@ class OefeningController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(oefening $oefening)
+    public function show($id)
     {
-        return $oefening;
+        $data = oefening::where('id', $id)->select('name', 'description', 'explanation', 'GIF')->get();
+        return $data;
+    }
+
+    public function showNL($id)
+    {
+        $data = oefening::where('id', $id)->select('name_nl as name','description_nl as description', 'explanation_nl as explanation', 'GIF')->get();
+        return $data;
     }
     /**
      * Store a newly created resource in storage.
