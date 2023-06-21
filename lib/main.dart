@@ -19,7 +19,7 @@ class Exercise extends StatelessWidget {
         length: 3,
         child: Scaffold(
           bottomNavigationBar: Container(
-            color: Colors.blue,
+            color: Color.fromRGBO(15, 238, 217, 100),
             child: const TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.home)),
