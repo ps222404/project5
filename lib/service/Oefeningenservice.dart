@@ -4,7 +4,7 @@ import 'package:project5mobile/models/Oefening.dart';
 
 class OefeningService {
   Future<List<Oefening>> getAll() async {
-    final response = await http.get(Uri.parse('http://192.168.141.1:8000/api/oefeningen'));
+    final response = await http.get(Uri.parse('http://192.168.2.26:8000/api/indexnl'));
     if (response.statusCode != 200) {
       throw Exception('Failed to fetch oefeningen (${response.statusCode}).');
     }

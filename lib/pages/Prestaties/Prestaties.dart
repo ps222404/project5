@@ -1,33 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:project5mobile/service/PrestatieService.dart';
+import 'package:project5mobile/models/Prestatie.dart';
 
 class Prestaties extends StatelessWidget {
-  const Prestaties({super.key});
+  const Prestaties({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Image.asset(
-              'lib/assets/wallpaper.jpg',
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              fit: BoxFit.cover,
-            ),
-            Center(
-              child: Container(
-                padding: EdgeInsets.all(50),
-                color: Colors.white70,
-                child: Text(
-                  'prestaties',
-                  style: TextStyle(color: Colors.deepPurpleAccent, fontSize: 40),
-                ),
-              ),
-            ),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Prestaties Index'),
       ),
+      body: FutureBuilder<List<Prestatie>>(
+        future: PrestatieService().getAll(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Text(snapshot.error.toString());
+          }
+          if (!snapshot.hasData) {
+            return const CircularProgressIndicator();
+          }
+          return _prestatiesIndex(snapshot.data!, context);
+        },
+      ),
+    );
+  }
+
+  Widget _prestatiesIndex(List<Prestatie> list, BuildContext context) {
+    return ListView.builder(
+      itemCount: list.length,
+      itemBuilder: (context, index) {
+        final prestatie = list[index];
+
+        return ListTile(
+          title: Text('Oefening ID: ${prestatie.oefeningId}'),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Amount: ${prestatie.amount}'),
+              Text('Date: ${prestatie.date.toString()}'),
+              Text('Start: ${prestatie.start.format(context)}'),
+              Text('End: ${prestatie.end.format(context)}'),
+            ],
+          ),
+        );
+      },
     );
   }
 }
