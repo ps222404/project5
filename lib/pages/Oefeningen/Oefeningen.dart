@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project5mobile/service/Oefeningenservice.dart';
 import 'package:project5mobile/models/Oefening.dart';
 import 'package:project5mobile/pages/about_us/aboutUs.dart';
+import 'package:project5mobile/pages/Oefeningen/oefeningshow.dart';
 
 class Oefeningen extends StatelessWidget {
   const Oefeningen({Key? key}) : super(key: key);
@@ -52,9 +53,15 @@ class Oefeningen extends StatelessWidget {
 
                     return ListTile(
                       title: Center(
-                        child: Text(oefening.name, style: TextStyle(fontSize: 25, color: Colors.white)), // Increased font size and changed color to white
+                        child: Text(oefening.name, style: TextStyle(fontSize: 25, color: Colors.white)),
+
                       ),
-                      // subtitle: Text(oefening.description),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ShowOefening(id: oefening.id)),
+                        );
+                      },
                     );
                   },
                 );

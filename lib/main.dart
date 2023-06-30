@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project5mobile/pages/HomePage.dart';
 import 'package:project5mobile/pages/Oefeningen/Oefeningen.dart';
 import 'package:project5mobile/pages/Prestaties/Prestaties.dart';
+import 'package:project5mobile/service/Inlogservice.dart';
 
 
 void main() {
@@ -16,23 +17,23 @@ class Exercise extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 3,
+        length: UserData.authToken != null ? 3 : 2,
         child: Scaffold(
           bottomNavigationBar: Container(
             color: Color.fromRGBO(15, 238, 217, 100),
-            child: const TabBar(
+            child: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.home)),
                 Tab(icon: Icon(Icons.accessibility_new_rounded)),
-                Tab(icon: Icon(Icons.hourglass_top)),
+                if (UserData.authToken != null) Tab(icon: Icon(Icons.hourglass_top)),
               ],
             ),
           ),
-          body: const TabBarView(
+          body: TabBarView(
             children: [
               HomePage(),
               Oefeningen(),
-              Prestaties(),
+              if (UserData.authToken != null) Prestaties(),
             ],
           ),
         ),

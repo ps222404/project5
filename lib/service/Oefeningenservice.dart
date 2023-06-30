@@ -4,7 +4,7 @@ import 'package:project5mobile/models/Oefening.dart';
 
 class OefeningService {
   Future<List<Oefening>> getAll() async {
-    final response = await http.get(Uri.parse('http://192.168.141.1:8000/api/oefeningen'));
+    final response = await http.get(Uri.parse('http://127.0.0.1:8000/api/indexnl'));
     if (response.statusCode != 200) {
       throw Exception('Failed to fetch oefeningen (${response.statusCode}).');
     }
@@ -18,5 +18,29 @@ class OefeningService {
     }
 
     return oefeningen;
+  }
+
+  Future<Oefening> getById(int oefeningId) async {
+    final id = oefeningId;
+    final url = 'http://127.0.0.1:8000/api/shownl/$id';
+    final response = await http.get(
+      Uri.parse(url),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final List<dynamic> data = jsonDecode(response.body);
+      if (data.isEmpty) {
+        throw Exception('No oefening found with ID $oefeningId.');
+      }
+      final Map<String, dynamic> oefeningData = data.first;
+      final oefening = Oefening.fromJson(oefeningData);
+      return oefening;
+
+    } else {
+      throw Exception('Failed to fetch oefening with ID $oefeningId.');
+    }
   }
 }
