@@ -20,7 +20,7 @@ class Exercise extends StatelessWidget {
         length: UserData.authToken != null ? 3 : 2,
         child: Scaffold(
           bottomNavigationBar: Container(
-            color: Colors.blue,
+            color: Color.fromRGBO(15, 238, 217, 100),
             child: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.home)),

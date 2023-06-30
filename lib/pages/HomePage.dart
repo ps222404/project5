@@ -5,18 +5,19 @@ import 'package:project5mobile/service/Inlogservice.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  void logout(BuildContext context) {
+    final authToken = UserData.authToken ?? '';
+    InlogService.logout(authToken, context);
+  }
 
+  @override
   Widget build(BuildContext context) {
-    void  logout(){
-      final authToken = UserData.authToken ?? '';
-      InlogService.logout(authToken, context);
-    }
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
             Image.asset(
-              'lib/assets/wallpaper.jpeg',
+              'lib/assets/oefeningen.jpg',
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               fit: BoxFit.cover,
@@ -36,33 +37,36 @@ class HomePage extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     if (UserData.authToken == null)
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginPage(),
-                            ),
-                          );
-                        },
-                        child: Text('Login'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginPage(),
+                                ),
+                              );
+                            },
+                            child: Text('Login'),
+                          ),
+                          SizedBox(width: 10),
+                          ElevatedButton(
+                            onPressed: () {
+                              // Handle register button press
+                            },
+                            child: Text('Register'),
+                          ),
+                        ],
                       ),
-                    if (UserData.authToken == null)
-                    SizedBox(height: 10),
-                    if (UserData.authToken == null)
-                    ElevatedButton(
-                      onPressed: () {
-                        // Handle register button press
-                      },
-                      child: Text('Register'),
-                    ),
                     SizedBox(height: 10),
                     if (UserData.authToken != null)
-                      ElevatedButton(
+                      TextButton(
                         onPressed: () {
-                           logout();
+                          logout(context);
                         },
-                        child: Text('logout'),
+                        child: Text('Logout'),
                       ),
                   ],
                 ),
