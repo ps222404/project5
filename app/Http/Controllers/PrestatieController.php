@@ -7,20 +7,9 @@ use Illuminate\Http\Request;
 
 class PrestatieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function showPrestaties($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return prestatie::where('user_id', $id)->get();
     }
 
     /**
@@ -28,23 +17,7 @@ class PrestatieController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(prestatie $prestatie)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(prestatie $prestatie)
-    {
-        //
+        return prestatie::create($request->only(['oefening_id','amount', 'date','time','user_id']));
     }
 
     /**
@@ -52,7 +25,8 @@ class PrestatieController extends Controller
      */
     public function update(Request $request, prestatie $prestatie)
     {
-        //
+        $prestatie->update($request->all());
+        return $prestatie;
     }
 
     /**
@@ -60,6 +34,6 @@ class PrestatieController extends Controller
      */
     public function destroy(prestatie $prestatie)
     {
-        //
+        $prestatie->delete();
     }
 }

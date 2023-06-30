@@ -12,39 +12,34 @@ class OefeningController extends Controller
      */
     public function index()
     {
-        //
+        return oefening::select('name', 'description', 'explanation', 'GIF')->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function IndexNL()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return oefening::select('name_nl as name','description_nl as description', 'explanation_nl as explanation', 'GIF')->get();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(oefening $oefening)
+    public function show($id)
     {
-        //
+        $data = oefening::where('id', $id)->select('name', 'description', 'explanation', 'GIF')->get();
+        return $data;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(oefening $oefening)
+    public function showNL($id)
     {
-        //
+        $data = oefening::where('id', $id)->select('name_nl as name','description_nl as description', 'explanation_nl as explanation', 'GIF')->get();
+        return $data;
+    }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        return oefening::create($request->only(['name', 'name_nl','description','description_nl','explanation','explanation_nl','GIF']));
     }
 
     /**
@@ -52,7 +47,8 @@ class OefeningController extends Controller
      */
     public function update(Request $request, oefening $oefening)
     {
-        //
+        $oefening->update($request->all());
+        return $oefening;
     }
 
     /**
@@ -60,6 +56,7 @@ class OefeningController extends Controller
      */
     public function destroy(oefening $oefening)
     {
-        //
+        $oefening->delete();
     }
+
 }
