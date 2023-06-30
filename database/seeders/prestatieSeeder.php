@@ -17,14 +17,13 @@ class prestatieSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@admin.nl',
-            'password' => 'Password',
+            'password' => bcrypt('Password'),
         ]);
         DB::table('prestaties')->insert([
             'oefening_id' => '1',
             'amount' => '10',
             'date' => Carbon::now()->toDateString(),
-            'start' => Carbon::now()->toTimeString(),
-            'end' => Carbon::now()->addMinutes(10)->toTimeString(),
+            'time' => "00:30",
             'user_id'=> '1',
         ]);
     }

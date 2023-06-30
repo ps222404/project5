@@ -17,8 +17,7 @@ return new class extends Migration
             $table->foreign('oefening_id')->references('id')->on('oefeningen');
             $table->integer("amount");
             $table->date("date");
-            $table->time("start");
-            $table->time("end");
+            $table->string("time");
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
