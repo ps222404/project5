@@ -17,7 +17,7 @@ class PrestatieController extends Controller
      */
     public function store(Request $request)
     {
-        return prestatie::create($request->only(['amount', 'date','time','user_id']));
+        return prestatie::create($request->only(['oefening_id','amount', 'date','time','user_id']));
     }
 
     /**
