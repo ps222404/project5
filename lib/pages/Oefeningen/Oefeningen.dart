@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project5mobile/service/Oefeningenservice.dart';
 import 'package:project5mobile/models/Oefening.dart';
+import 'package:project5mobile/pages/about_us/aboutUs.dart';
 
 class Oefeningen extends StatelessWidget {
   const Oefeningen({Key? key}) : super(key: key);
@@ -9,9 +10,25 @@ class Oefeningen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(15, 238, 217, 100),
-        title: Center(
-          child: Text('Oefeningen', style: TextStyle(fontSize: 24, color: Colors.white)), // Increased font size and changed color to white
+
+        centerTitle: true,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(right: 100.0), // Pas de waarde hier aan
+              child: Text('Oefeningen'),
+            ),
+            IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AboutUsPage()),
+                  );
+                }
+            ),
+          ],
         ),
       ),
       body: Stack(
