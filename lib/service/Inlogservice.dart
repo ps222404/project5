@@ -10,7 +10,7 @@ class UserData {
 class InlogService {
   static Future<void> login(BuildContext context, String email, String password) async {
     try {
-      final url = 'http://192.168.2.26:8000/api/login';
+      final url = 'http://127.0.0.1:8000/api/login';
 
       final response = await http.post(
         Uri.parse(url),
@@ -26,6 +26,7 @@ class InlogService {
         final data = json.decode(response.body);
         UserData.authToken = data['access_token'];
         UserData.userEmail = email;
+        UserData.userId = data['user']['id'];
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => Exercise()),
@@ -71,7 +72,7 @@ class InlogService {
   }
   static Future<void> logout(String token, BuildContext context) async {
     try {
-      final url = 'http://192.168.2.26:8000/api/logout';
+      final url = 'http://127.0.0.1:8000/api/logout';
       // Make the API request to log out
       final response = await http.post(
         Uri.parse(url),
