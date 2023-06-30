@@ -1,60 +1,35 @@
 import 'package:flutter/material.dart';
 
-
-
-
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About Us'),
+        title: const Text('About'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FlutterLogo(
-                size: 100.0,
-              ),
-              SizedBox(height: 16.0),
-              Text(
-                'About Us',
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) => AboutDialog(
+                applicationName: 'Summa move App',
+                applicationVersion: '1.0.0+1',
+                applicationIcon: CircleAvatar(
+                  child: Image.asset(
+                    'lib/assets/logo-1861420_1280.gif',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
                 ),
+                applicationLegalese: '© 2023 Jasper Millar, Shuceyb Maalin and Daniel Tankink. All rights reserved.',
               ),
-              SizedBox(height: 16.0),
-              Text(
-                'Welcome to our app! We are a dedicated team of developers who strive to create amazing experiences for our users.',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16.0),
-              ),
-              SizedBox(height: 16.0),
-              Text(
-                'Contact us:',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 8.0),
-              Text(
-                'Email: info@example.com',
-                style: TextStyle(fontSize: 16.0),
-              ),
-              Text(
-                'Phone: +1 123-456-7890',
-                style: TextStyle(fontSize: 16.0),
-              ),
-            ],
-          ),
+            );
+          },
+          child: const Text('Show About Dialog'),
         ),
       ),
     );
