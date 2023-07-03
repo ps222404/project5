@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project5mobile/service/Oefeningenservice.dart';
 import 'package:project5mobile/models/Oefening.dart';
+import 'package:project5mobile/pages/about_us/aboutUs.dart';
 import 'package:project5mobile/pages/Oefeningen/oefeningshow.dart';
 import 'package:project5mobile/pages/about_us/aboutUs.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project5mobile/pages/about_us/aboutUs.dart';
 import 'package:project5mobile/pages/Inloggen/LoginPage.dart';
 import 'package:project5mobile/service/Inlogservice.dart';
 
@@ -12,10 +13,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 100.0),
+              child: Text('Home'),
+            ),
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AboutUsPage()),
+                );
+              },
             Image.asset(
               'lib/assets/oefeningen.jpg',
               width: MediaQuery.of(context).size.width,
@@ -71,9 +86,30 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
+
             ),
           ],
         ),
+      ),
+      body: Stack(
+        children: [
+          Image.asset(
+            'lib/assets/wallpaper.jpg',
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            fit: BoxFit.cover,
+          ),
+          Center(
+            child: Container(
+              padding: EdgeInsets.all(50),
+              color: Colors.white70,
+              child: Text(
+                'Home',
+                style: TextStyle(color: Colors.deepPurpleAccent, fontSize: 40),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
