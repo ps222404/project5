@@ -39,7 +39,7 @@ class AuthenticationController extends Controller
 //            'access_token' => $request->bearerToken(),
             'access_token' => auth()->user()->createToken('API Token')->plainTextToken,
             'token_type' => 'Bearer',
-            'user' => auth()->user()->makeHidden(['email_verified_at', 'created_at', 'updated_at']),
+            'user' => auth()->user()->makeHidden(['email_verified_at', 'created_at', 'updated_at'])
         ];
         Log::channel('api')->info('Loged in', ['item' => $request->except(["_token", "password"])]);
         return response()->json($response, 200);

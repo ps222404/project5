@@ -12,12 +12,12 @@ class OefeningController extends Controller
      */
     public function index()
     {
-        return oefening::select('name', 'description', 'explanation', 'GIF')->get();
+        return oefening::select('id','name', 'description', 'explanation', 'GIF')->get();
     }
 
     public function IndexNL()
     {
-        return oefening::select('name_nl as name','description_nl as description', 'explanation_nl as explanation', 'GIF')->get();
+        return oefening::select('id','name_nl as name','description_nl as description', 'explanation_nl as explanation', 'GIF')->get();
     }
 
     /**
@@ -25,13 +25,13 @@ class OefeningController extends Controller
      */
     public function show($id)
     {
-        $data = oefening::where('id', $id)->select('name', 'description', 'explanation', 'GIF')->get();
+        $data = oefening::where('id', $id)->select('id','name', 'description', 'explanation', 'GIF')->get();
         return $data;
     }
 
     public function showNL($id)
     {
-        $data = oefening::where('id', $id)->select('name_nl as name','description_nl as description', 'explanation_nl as explanation', 'GIF')->get();
+        $data = oefening::where('id', $id)->select('id','name_nl as name','description_nl as description', 'explanation_nl as explanation', 'GIF')->get();
         return $data;
     }
     /**

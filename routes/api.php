@@ -22,6 +22,7 @@ Route::get('/indexnl', [OefeningController::class, 'indexNL']);
 Route::get('/shownl/{id}', [OefeningController::class, 'showNL']);
 Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/login', [AuthenticationController::class, 'login']);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('profile', function(Request $request) {
         return auth()->user();
