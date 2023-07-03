@@ -35,7 +35,3 @@ class AboutUsPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
