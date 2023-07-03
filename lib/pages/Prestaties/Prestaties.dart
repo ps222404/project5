@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project5mobile/pages/about_us/aboutUs.dart';
 import 'package:project5mobile/service/PrestatieService.dart';
 import 'package:project5mobile/models/Prestatie.dart';
 import 'package:project5mobile/models/Oefening.dart';
@@ -12,24 +11,6 @@ class Prestaties extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 100.0),
-              child: Text('Mijn App'),
-            ),
-            IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AboutUsPage()),
-                );
-              },
-            ),
-          ],
         title: const Text('Prestaties Index'),
         backgroundColor: Color.fromRGBO(15, 238, 217, 100),
       ),
@@ -96,26 +77,6 @@ class Prestaties extends StatelessWidget {
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.85), BlendMode.dstATop), // Adjust opacity here
         ),
-      ),
-      body: Stack(
-        children: [
-          Image.asset(
-            'lib/assets/wallpaper.jpg',
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            fit: BoxFit.cover,
-          ),
-          Center(
-            child: Container(
-              padding: EdgeInsets.all(50),
-              color: Colors.white70,
-              child: Text(
-                'prestaties',
-                style: TextStyle(color: Colors.deepPurpleAccent, fontSize: 40),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
