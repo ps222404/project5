@@ -3,7 +3,6 @@ import 'package:project5mobile/service/Oefeningenservice.dart';
 import 'package:project5mobile/models/Oefening.dart';
 import 'package:project5mobile/pages/about_us/aboutUs.dart';
 import 'package:project5mobile/pages/Oefeningen/oefeningshow.dart';
-import 'package:project5mobile/pages/about_us/aboutUs.dart';
 
 class Oefeningen extends StatelessWidget {
   const Oefeningen({Key? key}) : super(key: key);
@@ -12,22 +11,23 @@ class Oefeningen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         centerTitle: true,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 100.0),
-              child: Text('Mijn App'),
+              padding: EdgeInsets.only(right: 100.0), // Pas de waarde hier aan
+              child: Text('Oefeningen'),
             ),
             IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AboutUsPage()),
-                );
-              },
+                icon: Icon(Icons.settings),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AboutUsPage()),
+                  );
+                }
             ),
           ],
         ),
