@@ -11,13 +11,14 @@ class Oefeningen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(15, 238, 217, 100),
         centerTitle: true,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 100.0),
-              child: Text('Mijn App'),
+              child: Text('Oefeningen'),
             ),
             IconButton(
               icon: Icon(Icons.settings),

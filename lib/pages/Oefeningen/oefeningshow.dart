@@ -42,7 +42,7 @@ class ShowOefening extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('lib/assets/oefeningen.jpg'), // Replace with your background image asset
+          image: AssetImage('lib/assets/oefeningen.jpg'),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Colors.black.withOpacity(0.85),
