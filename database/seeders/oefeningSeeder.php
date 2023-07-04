@@ -72,7 +72,7 @@ class oefeningSeeder extends Seeder
             6.	Zet je ellebogen even vast.
             7.	Herhaal vanaf stap 2.
 	        Doe dit 5 keer en veel succes met de oefening.',
-            'GIF' => 'dip.gif'
+            'GIF' => 'Dip.gif'
         ]);
         DB::table('oefeningen')->insert([
             'name' => 'Plank',
@@ -90,7 +90,7 @@ class oefeningSeeder extends Seeder
             3.	Steun op je ellebogen en je tenen en zorg ervoor dat je rug recht is
             4.	Probeer zo veel mogelijk recht te blijven
             5.	Houdt deze positie vast voor 30 seconden',
-            'GIF' => 'plank.gif'
+            'GIF' => 'Plank.gif'
         ]);
         DB::table('oefeningen')->insert([
             'name' => 'Donkey Kicks',
